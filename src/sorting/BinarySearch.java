@@ -1,4 +1,4 @@
-package insertionsort;
+package sorting;
 
 public class BinarySearch {
 	public int binarySearch(int arr[], int l, int h, int key) {

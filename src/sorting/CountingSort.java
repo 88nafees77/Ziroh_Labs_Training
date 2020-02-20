@@ -1,4 +1,4 @@
-package insertionsort;
+package sorting;
 
 public class CountingSort {
 	public int[] countingSort(int arr[]) {

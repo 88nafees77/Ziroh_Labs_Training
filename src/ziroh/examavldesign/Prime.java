@@ -23,13 +23,11 @@ public class Prime implements PipeLine {
             }
         }
         if (flag == 0) {
-            System.out.println(key + "is a prime");
+            System.out.println(key + "  " + "is a prime");
         } else {
-            System.out.println(key + "is not a prime");
+            System.out.println(key + "  " + "is not a prime");
         }
-        if (getNext() != null) {
-            this.getNext().execute(node, key);
-        }
+        System.out.println("------------------");
         if (getNext() != null) {
             this.getNext().execute(node, key);
         }

@@ -2,8 +2,13 @@ package ziroh.examavldesign;
 
 public class Node {
 
+    /**
+     * PipeLine head contains head of the list
+     * height contains height of the current node
+     * 
+     */
     int key;
-    int height;
+    int height=1;
     PipeLine head;
 
     public Node(int key) {

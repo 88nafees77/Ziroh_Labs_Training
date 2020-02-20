@@ -1,4 +1,4 @@
-package insertionsort;
+package sorting;
 
 public class InsertionSort {
 	public int[] insertSort(int arr[]) {

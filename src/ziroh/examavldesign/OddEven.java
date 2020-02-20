@@ -16,9 +16,14 @@ public class OddEven implements PipeLine {
     @Override
     public void execute(Node node, int key) {
         if (key % 2 == 0) {
-            System.out.println(key + "is a even");
+            System.out.println(key + "  " + "is a even");
         } else {
-            System.out.println(key + "is a odd");
+            System.out.println(key + "  " + "is a odd");
+        }
+
+        System.out.println("------------------");
+        if (getNext() != null) {
+            this.getNext().execute(node, key);
         }
     }
 

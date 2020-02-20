@@ -5,6 +5,11 @@ public class Tree {
     Node root = null;
     PipeLine pipe;
 
+    /**
+     *
+     * @param setPipe methods is used for store the reference of PipeLine class
+     * object;
+     */
     public void setPipe(PipeLine p) {
         if (pipe == null) {
             pipe = p;
@@ -17,7 +22,13 @@ public class Tree {
         }
     }
 
-    private void execute(Node node, int data) {
+    /**
+     * execute method() is responsible for run the all methods from the pipeLine
+     *
+     * @param node current Node
+     * @param data key to be inserted
+     */
+    public void execute(Node node, int data) {
         if (pipe != null) {
             PipeLine head = pipe;
             while (head != null) {
@@ -28,6 +39,10 @@ public class Tree {
 
     }
 
+    /**
+     *
+     * @param key
+     */
     public void insert(int key) {
         if (root == null) {
             root = new RootNode(key);
@@ -37,16 +52,24 @@ public class Tree {
         root = insert(root, key);
     }
 
+    /**
+     *
+     * @param currNode root node
+     * @param key
+     * @return type will be Node
+     */
     private Node insert(Node currNode, int key) {
+        if (currNode != null) {
+            execute(currNode, key);
+        }
 
         Node newnode = new LeafNode(key);
         if (currNode instanceof RootNode) {
 
             if (currNode.key > key) {
                 if (((RootNode) currNode).left != null) {
-                    execute(newnode, key);
+
                     ((RootNode) currNode).left = insert(((RootNode) currNode).left, key);
-                    //  currNode = ((RootNode) currNode).left;
 
                 } else {
                     ((RootNode) currNode).left = newnode;
@@ -55,7 +78,7 @@ public class Tree {
 
             } else {
                 if (((RootNode) currNode).right != null) {
-                    execute(newnode, key);
+                    //   execute(currNode, key);
                     ((RootNode) currNode).right = insert(((RootNode) currNode).right, key);
 
                 } else {
@@ -68,7 +91,7 @@ public class Tree {
 
             if (currNode.key > key) {
                 if (((InternalNode) currNode).left != null) {
-                    execute(newnode, key);
+                    //   execute(currNode, key);
                     ((InternalNode) currNode).left = insert(((InternalNode) currNode).left, key);
                 } else {
                     ((InternalNode) currNode).left = newnode;
@@ -79,7 +102,7 @@ public class Tree {
 
             } else {
                 if (((InternalNode) currNode).right != null) {
-                    execute(newnode, key);
+                    // execute(currNode, key);
                     ((InternalNode) currNode).right = insert(((InternalNode) currNode).right, key);
 
                 } else {
@@ -92,11 +115,13 @@ public class Tree {
             currNode = leafToInternal((LeafNode) currNode);
 
             if (currNode.key > key) {
+
                 ((InternalNode) currNode).left = newnode;
 
                 return currNode;
 
             } else {
+
                 ((InternalNode) currNode).right = newnode;
 
                 return currNode;
@@ -105,21 +130,16 @@ public class Tree {
         } else {
             return currNode;
         }
-        int balance = 0;
-        if (currNode instanceof RootNode) {
-            ((RootNode) currNode).height = 1 + max(getheight(((RootNode) currNode).left), getheight(((RootNode) currNode).right));
-            balance = getBalanceFactor(currNode);
-        } else if (currNode instanceof InternalNode) {
-            ((InternalNode) currNode).height = 1 + max(getheight(((InternalNode) currNode).left), getheight(((InternalNode) currNode).right));
-            balance = getBalanceFactor(currNode);
-        } else {
-            currNode.height = 0;
-        }
-
         return currNode;
 
     }
 
+    /**
+     *
+     * @param key is to search into the search method
+     * @return type of search method is boolean,if key is available then it wil
+     * return true otherwise it should return false
+     */
     public boolean search(int key) {
         return search(root, key);
     }
@@ -160,6 +180,11 @@ public class Tree {
 
     }
 
+    /**
+     *
+     * @param obj LeafNode type object
+     * @return type is Internal Node
+     */
     public InternalNode leafToInternal(LeafNode obj) {
         return new InternalNode(obj.key);
 
@@ -183,6 +208,11 @@ public class Tree {
         return (a > b) ? a : b;
     }
 
+    /**
+     *
+     * @param node current node
+     * @return type is int
+     */
     public int getheight(Node node) {
         if (node == null) {
             return 0;
@@ -206,6 +236,11 @@ public class Tree {
 
     }
 
+    /**
+     * this method is used for remove the object from the pipeline
+     *
+     * @param line is a Pipeline type object
+     */
     public void removePipeLine(Class line) {
         if (pipe != null) {
 

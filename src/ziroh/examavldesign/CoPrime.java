@@ -10,8 +10,8 @@ package ziroh.examavldesign;
  * @author nafees
  */
 public class CoPrime implements PipeLine {
-    
-  private  PipeLine successor=null;
+
+    private PipeLine successor = null;
 
     @Override
     public void execute(Node node, int key) {
@@ -23,23 +23,24 @@ public class CoPrime implements PipeLine {
             }
         }
         if (coPrime == 1) {
-            System.out.println(node.getKey() + "and" + key + "are coPrime");
+            System.out.println(node.getKey() + "  " + "and " + key + " " + "are coPrime");
         } else {
-            System.out.println(node.getKey() + "and" + key + "are not coPrime");
+            System.out.println(node.getKey() + "  " + "and " + key + " " + "are not coPrime");
         }
-        if(getNext()!=null) {
+        System.out.println("------------------");
+        if (getNext() != null) {
             this.getNext().execute(node, key);
         }
     }
-    
-     @Override
+
+    @Override
     public PipeLine getNext() {
         return successor;
     }
 
     @Override
     public void setNext(PipeLine successor) {
-        this.successor=successor;
+        this.successor = successor;
     }
 
 }
